@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FaceAccessControl</string>
+    <string name="welcome_start_button">开始使用</string>
+    <string name="welcome_tutor_button">使用说明</string>
 </resources>
