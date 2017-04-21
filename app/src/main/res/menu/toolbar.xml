@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/toolbar_back"
+        android:icon="@drawable/ic_back"
+        android:title="@string/toolbar_back"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/toolbar_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/toolbar_home"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/toolbar_tutor"
+        android:icon="@drawable/ic_tutor"
+        android:title="@string/toolbar_tutor"
+        app:showAsAction="ifRoom"
+        />
+</menu>

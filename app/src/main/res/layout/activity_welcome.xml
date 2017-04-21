@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cn.edu.ecust.faceaccesscontrol.WelcomeActivity">
+    tools:context="cn.edu.ecust.faceaccesscontrol.activity.WelcomeActivity">
 
     <ImageView
         android:id="@+id/welcomeBackground"
