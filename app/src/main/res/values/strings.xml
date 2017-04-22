@@ -13,6 +13,9 @@
     <string name="dialogexit_message">您确定要退出程序吗？</string>
     <string name="dialogexit_exit_button">退出</string>
     <string name="dialogexit_noexit_button">点错了，别关</string>
+    <string name="dialogpassword_title">请输入管理员密码</string>
+    <string name="dialogpassword_login_button">登录</string>
+    <string name="dialogpassword_cancel_button">取消</string>
     <string name="registernewuser_no_text">工号</string>
     <string name="registernewuser_name_text">姓名</string>
     <string name="registernewuser_password_text">密码</string>
@@ -20,4 +23,10 @@
     <string name="registernewuser_cellphoneno_text">手机号码</string>
     <string name="registernewuser_nextstep_button">下一步</string>
     <string name="registernewuser_label">注册用户</string>
+    <string name="nav_call">手机</string>
+    <string name="nav_location">地址</string>
+    <string name="nav_mail">邮箱</string>
+    <string name="nav_config">修改信息</string>
+    <string name="nav_close">注销</string>
+    <string name="adminmainpage_label">管理员模式</string>
 </resources>

@@ -47,9 +47,10 @@ public class NoAdminMainActivity extends Toolbar2Activity {
         });
         button_adminlogin.setOnClickListener(new View.OnClickListener() {//点击管理员登录按钮
             @Override
-            public void onClick(View v) {
-                Intent intent_adminlogin=new Intent(NoAdminMainActivity.this,AdminMainActivity.class);
-                startActivity(intent_adminlogin);
+            public void onClick(View v) {//点击管理员登录按钮
+                //Intent intent_adminlogin=new Intent(NoAdminMainActivity.this,AdminMainActivity.class);
+                //startActivity(intent_adminlogin);
+                AllUseAlertDialog.adminPasswordConfirmDialogshow(NoAdminMainActivity.this);
             }
         });
     }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    android:background="@color/keepBrown">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/nav_icon_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/nav_icon"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/nav_adminname_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CommissarMa"
+        android:layout_below="@+id/nav_icon_image"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
