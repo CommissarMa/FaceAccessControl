@@ -13,6 +13,7 @@
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,9 +27,13 @@
             android:screenOrientation="landscape" />
         <activity android:name=".common.ExitDialogActivity" />
         <activity android:name=".common.Toolbar2Activity" />
-        <activity android:name=".activity.AdminMainActivity"
+        <activity
+            android:name=".activity.AdminMainActivity"
             android:label="@string/adminmainpage_label"
             android:screenOrientation="landscape" />
+        <activity android:name=".activity.AdminConfigActivity"
+            android:label="@string/adminconfig_label"
+            android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

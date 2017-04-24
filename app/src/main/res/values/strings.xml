@@ -29,4 +29,12 @@
     <string name="nav_config">修改信息</string>
     <string name="nav_close">注销</string>
     <string name="adminmainpage_label">管理员模式</string>
+    <string name="adminconfig_label">修改管理员信息</string>
+    <string name="adminconfig_name_text">姓名</string>
+    <string name="adminconfig_password_text">密码</string>
+    <string name="adminconfig_confirmpassword_text">确认密码</string>
+    <string name="adminconfig_phonenumber_text">手机</string>
+    <string name="adminconfig_location_text">地址</string>
+    <string name="adminconfig_mail_text">邮箱</string>
+    <string name="adminconfig_saveconfig_button">保存修改</string>
 </resources>
