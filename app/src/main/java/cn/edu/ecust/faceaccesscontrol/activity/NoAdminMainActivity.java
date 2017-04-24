@@ -1,8 +1,11 @@
 package cn.edu.ecust.faceaccesscontrol.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -49,6 +52,30 @@ public class NoAdminMainActivity extends Toolbar2Activity {
             @Override
             public void onClick(View v) {//点击管理员登录按钮
                 AllUseAlertDialog.adminPasswordConfirmDialogshow(NoAdminMainActivity.this);
+            }
+        });
+
+        final AppCompatTextView adminInfoTextView=(AppCompatTextView)findViewById(R.id.admininfo_text);
+        SharedPreferences pref=getSharedPreferences("admin_data",MODE_PRIVATE);//SharedPreferences的文件名是admin_data
+        String adminInfo="管理员联系方式"+(pref.getString("admin_name","").equals("")?" 姓名：":" 姓名："+pref.getString("admin_name",""))
+                +" \n "
+                +(pref.getString("admin_cellphone","").equals("")?" 手机：":" 手机："+pref.getString("admin_cellphone",""))
+                +" \n "
+                +(pref.getString("admin_location","").equals("")?" 地址：":" 地址："+pref.getString("admin_location",""))
+                +" \n "
+                +(pref.getString("admin_mail","").equals("")?" 邮箱：":" 邮箱："+pref.getString("admin_mail",""));
+        adminInfoTextView.setText(adminInfo);
+        adminInfoTextView.setVisibility(View.INVISIBLE);
+
+        FloatingActionButton fbtnAdminInfo=(FloatingActionButton)findViewById(R.id.floatbutton_admininfo);//悬浮按钮
+        fbtnAdminInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(adminInfoTextView.getVisibility()==View.INVISIBLE){
+                    adminInfoTextView.setVisibility(View.VISIBLE);
+                }else{
+                    adminInfoTextView.setVisibility(View.INVISIBLE);
+                }
             }
         });
     }

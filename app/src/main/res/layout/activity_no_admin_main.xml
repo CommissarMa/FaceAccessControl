@@ -59,7 +59,41 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:layout_weight="2">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2">
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/floatbutton_admininfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/ic_admin"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/admininfo_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:gravity="right"
+                    android:layout_toLeftOf="@+id/floatbutton_admininfo"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="16dp" />
+            </RelativeLayout>
+
 
         </LinearLayout>
     </LinearLayout>

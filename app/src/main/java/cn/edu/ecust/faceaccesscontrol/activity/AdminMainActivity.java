@@ -60,7 +60,7 @@ public class AdminMainActivity extends Toolbar2Activity {
         SharedPreferences pref=getSharedPreferences("admin_data",MODE_PRIVATE);//SharedPreferences的文件名是admin_data
         View headerLayout = navView.getHeaderView(0); // 0-index header
         TextView nameText=(TextView)headerLayout.findViewById(R.id.nav_adminname_text);
-        nameText.setText(pref.getString("admin_name","").equals("")?"用户名":pref.getString("admin_name",""));
+        nameText.setText(pref.getString("admin_name","").equals("")?"管理员":pref.getString("admin_name",""));
         navView.getMenu().findItem(R.id.nav_call).setTitle(pref.getString("admin_cellphone","").equals("")?"手机":pref.getString("admin_cellphone",""));
         navView.getMenu().findItem(R.id.nav_location).setTitle(pref.getString("admin_location","").equals("")?"地址":pref.getString("admin_location",""));
         navView.getMenu().findItem(R.id.nav_mail).setTitle(pref.getString("admin_mail","").equals("")?"邮箱":pref.getString("admin_mail",""));
@@ -75,7 +75,7 @@ public class AdminMainActivity extends Toolbar2Activity {
                     SharedPreferences pref=getSharedPreferences("admin_data",MODE_PRIVATE);//SharedPreferences的文件名是admin_data
                     View headerLayout = navView.getHeaderView(0); // 0-index header
                     TextView nameText=(TextView)headerLayout.findViewById(R.id.nav_adminname_text);
-                    nameText.setText(pref.getString("admin_name","").equals("")?"用户名":pref.getString("admin_name",""));
+                    nameText.setText(pref.getString("admin_name","").equals("")?"管理员":pref.getString("admin_name",""));
                     navView.getMenu().findItem(R.id.nav_call).setTitle(pref.getString("admin_cellphone","").equals("")?"手机":pref.getString("admin_cellphone",""));
                     navView.getMenu().findItem(R.id.nav_location).setTitle(pref.getString("admin_location","").equals("")?"地址":pref.getString("admin_location",""));
                     navView.getMenu().findItem(R.id.nav_mail).setTitle(pref.getString("admin_mail","").equals("")?"邮箱":pref.getString("admin_mail",""));
