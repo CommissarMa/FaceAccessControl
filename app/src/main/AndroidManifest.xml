@@ -31,9 +31,17 @@
             android:name=".activity.AdminMainActivity"
             android:label="@string/adminmainpage_label"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.AdminConfigActivity"
+        <activity
+            android:name=".activity.AdminConfigActivity"
             android:label="@string/adminconfig_label"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.AdminNoticeActivity"
+            android:label="@string/adminnotice_label"
+            android:screenOrientation="landscape" />
+        <activity android:name=".activity.AdminNoticeEditActivity"
+            android:label="@string/adminnoticeedit_label"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

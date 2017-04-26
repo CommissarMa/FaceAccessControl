@@ -6,6 +6,7 @@
     <string name="noadminmain_recognize_button">识别用户</string>
     <string name="noadminmain_adminlogin_button">管理员登陆</string>
     <string name="noadminmain_label">用户模式</string>
+    <string name="noadminmain_noticebar">通知栏</string>
     <string name="toolbar_home">起始页</string>
     <string name="toolbar_back">返回上一页</string>
     <string name="toolbar_tutor">教程</string>
@@ -37,4 +38,12 @@
     <string name="adminconfig_location_text">地址</string>
     <string name="adminconfig_mail_text">邮箱</string>
     <string name="adminconfig_saveconfig_button">保存修改</string>
+    <string name="adminmain_noticemanage">通知管理</string>
+    <string name="adminmain_usermanage">用户管理</string>
+    <string name="adminnotice_label">通知管理</string>
+    <string name="adminnotice_edit">编辑</string>
+    <string name="adminnotice_delete">删除</string>
+    <string name="adminnotice_add">添加新通知</string>
+    <string name="adminnoticeedit_label">编辑公告</string>
+    <string name="adminnoticeedit_savechange_button">保存修改</string>
 </resources>

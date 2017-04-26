@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.util.Log;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import cn.edu.ecust.faceaccesscontrol.R;
 import cn.edu.ecust.faceaccesscontrol.activity.AdminMainActivity;
+import cn.edu.ecust.faceaccesscontrol.activity.AdminNoticeActivity;
+import cn.edu.ecust.faceaccesscontrol.activity.AdminNoticeEditActivity;
 import cn.edu.ecust.faceaccesscontrol.activity.NoAdminMainActivity;
 
 /**
@@ -30,7 +33,7 @@ public class AllUseAlertDialog {
         AlertDialog.Builder dialog_exit=new AlertDialog.Builder(activity);
         dialog_exit.setTitle(R.string.dialogexit_title);
         dialog_exit.setMessage(R.string.dialogexit_message);
-        dialog_exit.setCancelable(false);
+        //dialog_exit.setCancelable(false);
         dialog_exit.setPositiveButton(R.string.dialogexit_exit_button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -52,7 +55,7 @@ public class AllUseAlertDialog {
         final AlertDialog.Builder dialog_exit=new AlertDialog.Builder(activity);
         dialog_exit.setTitle(R.string.dialogpassword_title);
         dialog_exit.setView(layout);
-        dialog_exit.setCancelable(false);
+        //dialog_exit.setCancelable(false);
         final EditText passwordText=(EditText)layout.findViewById(R.id.alert_password_text);
         dialog_exit.setPositiveButton(R.string.dialogpassword_cancel_button, new DialogInterface.OnClickListener() {
             @Override
@@ -69,10 +72,41 @@ public class AllUseAlertDialog {
                 if(pw.equals(pw_sp)){
                     Intent admin_intent=new Intent(activity,AdminMainActivity.class);
                     activity.startActivity(admin_intent);
+                    activity.finish();
                 }
                 else{
                     Toast.makeText(activity,"密码错误，请重试!",Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        dialog_exit.show();
+    }
+
+    public static void showNoticeOptionsAlertDialog(final Activity activity, final int index){//index为id在数据库中的实际值
+        AlertDialog.Builder dialog_exit=new AlertDialog.Builder(activity);
+        //dialog_exit.setTitle(R.string.dialogexit_title);
+        //dialog_exit.setMessage(R.string.dialogexit_message);
+        //dialog_exit.setCancelable(false);
+        dialog_exit.setPositiveButton(R.string.adminnotice_delete, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {//删除通知按钮
+                Toast.makeText(activity,index+"",Toast.LENGTH_SHORT).show();
+                MyDatabaseHelper dbHelper=new MyDatabaseHelper(activity,"Face.db",null,1);
+                SQLiteDatabase db=dbHelper.getWritableDatabase();
+                db.delete("Notice","id = ?",new String[]{""+index});
+                db.execSQL("update Notice set id = id-1 where id > ?",new String[]{""+index});
+                Intent intent_newNoticeActivity=new Intent(activity, AdminNoticeActivity.class);
+                activity.startActivity(intent_newNoticeActivity);
+                activity.finish();
+            }
+        });
+        dialog_exit.setNegativeButton(R.string.adminnotice_edit, new DialogInterface.OnClickListener() {//编辑通知按钮
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent_newNoticeEditActivity=new Intent(activity, AdminNoticeEditActivity.class);
+                intent_newNoticeEditActivity.putExtra("idIndexInDB",index);//把id的index传过去
+                activity.startActivity(intent_newNoticeEditActivity);
+                activity.finish();
             }
         });
         dialog_exit.show();

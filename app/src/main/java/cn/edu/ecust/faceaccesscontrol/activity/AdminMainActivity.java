@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,6 +51,8 @@ public class AdminMainActivity extends Toolbar2Activity {
                         break;
                     case R.id.nav_close:
                         Toast.makeText(AdminMainActivity.this,"管理员已注销!",Toast.LENGTH_SHORT).show();
+                        Intent intent_adminActivity=new Intent(AdminMainActivity.this,NoAdminMainActivity.class);
+                        startActivity(intent_adminActivity);
                         finish();
                         break;
                     default:
@@ -64,6 +67,22 @@ public class AdminMainActivity extends Toolbar2Activity {
         navView.getMenu().findItem(R.id.nav_call).setTitle(pref.getString("admin_cellphone","").equals("")?"手机":pref.getString("admin_cellphone",""));
         navView.getMenu().findItem(R.id.nav_location).setTitle(pref.getString("admin_location","").equals("")?"地址":pref.getString("admin_location",""));
         navView.getMenu().findItem(R.id.nav_mail).setTitle(pref.getString("admin_mail","").equals("")?"邮箱":pref.getString("admin_mail",""));
+
+        Button noticeManageButton=(Button)findViewById(R.id.adminmain_noticemanage_button);//通知管理按钮
+        Button userManageButton=(Button)findViewById(R.id.adminmain_usermanage_button);//用户管理按钮
+        noticeManageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_noticemanage=new Intent(AdminMainActivity.this,AdminNoticeActivity.class);
+                startActivity(intent_noticemanage);
+            }
+        });
+        userManageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 

@@ -6,9 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -17,7 +19,35 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             />
-    </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/adminmain_noticemanage_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginTop="64dp"
+                android:layout_marginBottom="64dp"
+                android:layout_marginLeft="64dp"
+                android:layout_marginRight="32dp"
+                android:background="@color/buttonWhite"
+                android:text="@string/adminmain_noticemanage"/>
+            <Button
+                android:id="@+id/adminmain_usermanage_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginTop="64dp"
+                android:layout_marginBottom="64dp"
+                android:layout_marginRight="64dp"
+                android:layout_marginLeft="32dp"
+                android:background="@color/buttonWhite"
+                android:text="@string/adminmain_usermanage"/>
+        </LinearLayout>
+    </LinearLayout>>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
