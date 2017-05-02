@@ -2,12 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.edu.ecust.faceaccesscontrol">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/app_faceicon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".common.ExitDialogActivity" />
+        <activity android:name=".common.Toolbar2Activity" />
+        <activity android:name=".common.FullScreenActivity" />
         <activity
             android:name=".activity.WelcomeActivity"
             android:screenOrientation="landscape">
@@ -19,14 +24,12 @@
         </activity>
         <activity
             android:name=".activity.NoAdminMainActivity"
-            android:label="@string/noadminmain_label"
+            android:label="@string/noadminmainactivity_label_title"
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity.RegisterNewUserActivity"
-            android:label="@string/registernewuser_label"
+            android:label="@string/registernewuseractivity_label_title"
             android:screenOrientation="landscape" />
-        <activity android:name=".common.ExitDialogActivity" />
-        <activity android:name=".common.Toolbar2Activity" />
         <activity
             android:name=".activity.AdminMainActivity"
             android:label="@string/adminmainpage_label"
@@ -39,9 +42,13 @@
             android:name=".activity.AdminNoticeActivity"
             android:label="@string/adminnotice_label"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.AdminNoticeEditActivity"
+        <activity
+            android:name=".activity.AdminNoticeEditActivity"
             android:label="@string/adminnoticeedit_label"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
+
+        <activity android:name=".activity.CameraRegisterActivity"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

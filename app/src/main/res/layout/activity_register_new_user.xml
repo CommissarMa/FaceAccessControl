@@ -9,7 +9,7 @@
     tools:context="cn.edu.ecust.faceaccesscontrol.activity.RegisterNewUserActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/registernewuseractivity_toolbar_common"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/keepBrown"
@@ -32,10 +32,10 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="5">
-                <android.support.v7.widget.AppCompatTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/registernewuser_no_text"
+                    android:text="@string/registernewuseractivity_textview_userno"
                     android:gravity="center_vertical|right" />
             </LinearLayout>
             <LinearLayout
@@ -43,7 +43,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="4">
-                <android.support.v7.widget.AppCompatEditText
+                <EditText
+                    android:id="@+id/registernewuseractivity_edittext_userno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/buttonWhite"
@@ -54,7 +55,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="5">
-                <android.support.v7.widget.AppCompatTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text=""
@@ -72,10 +73,10 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="5">
-                <android.support.v7.widget.AppCompatTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/registernewuser_name_text"
+                    android:text="@string/registernewuseractivity_textview_username"
                     android:gravity="center_vertical|right" />
             </LinearLayout>
             <LinearLayout
@@ -83,7 +84,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="4">
-                <android.support.v7.widget.AppCompatEditText
+                <EditText
+                    android:id="@+id/registernewuseractivity_edittext_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/buttonWhite"
@@ -94,7 +96,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="5">
-                <android.support.v7.widget.AppCompatTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text=""
@@ -112,10 +114,10 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="5">
-                <android.support.v7.widget.AppCompatTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/registernewuser_password_text"
+                    android:text="@string/registernewuseractivity_textview_userpassword"
                     android:gravity="center_vertical|right" />
             </LinearLayout>
             <LinearLayout
@@ -123,7 +125,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="4">
-                <android.support.v7.widget.AppCompatEditText
+                <EditText
+                    android:id="@+id/registernewuseractivity_edittext_userpassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -135,7 +138,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="5">
-                <android.support.v7.widget.AppCompatTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text=""
@@ -153,10 +156,10 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="5">
-                <android.support.v7.widget.AppCompatTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/registernewuser_confirmpassword_text"
+                    android:text="@string/registernewuseractivity_textview_userconfirmpassword"
                     android:gravity="center_vertical|right" />
             </LinearLayout>
             <LinearLayout
@@ -164,7 +167,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="4">
-                <android.support.v7.widget.AppCompatEditText
+                <EditText
+                    android:id="@+id/registernewuseractivity_edittext_userconfirmpassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -176,7 +180,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="5">
-                <android.support.v7.widget.AppCompatTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text=""
@@ -194,10 +198,10 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="5">
-                <android.support.v7.widget.AppCompatTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/registernewuser_cellphoneno_text"
+                    android:text="@string/registernewuseractivity_textview_usercellphone"
                     android:gravity="center_vertical|right" />
             </LinearLayout>
             <LinearLayout
@@ -205,7 +209,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="4">
-                <android.support.v7.widget.AppCompatEditText
+                <EditText
+                    android:id="@+id/registernewuseractivity_edittext_usercellphone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/buttonWhite"
@@ -216,7 +221,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:layout_weight="5">
-                <android.support.v7.widget.AppCompatTextView
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text=""
@@ -241,10 +246,11 @@
                 android:layout_margin="8dp"
                 android:layout_weight="4">
                 <Button
+                    android:id="@+id/registernewuseractivity_button_nextstep"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/buttonWhite"
-                    android:text="@string/registernewuser_nextstep_button"/>
+                    android:text="@string/registernewuseractivity_button_nextstep"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"

@@ -9,7 +9,7 @@
     tools:context="cn.edu.ecust.faceaccesscontrol.activity.NoAdminMainActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/noadminmainactivity_toolbar_common"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/keepBrown"
@@ -29,42 +29,42 @@
             android:layout_weight="3">
 
             <Button
-                android:id="@+id/noadminmain_register"
+                android:id="@+id/noadminmainactivity_button_register"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/button_register"
+                android:background="@drawable/noadminmainactivity_button_register"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="48dp"
                 android:layout_marginRight="48dp"
-                android:text="@string/noadminmain_register_button"
+                android:text="@string/noadminmainactivity_button_register"
                 android:textColor="#f96300"/>
 
             <Button
-                android:id="@+id/noadminmain_recognize"
+                android:id="@+id/noadminmainactivity_button_recognize"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/button_recognize"
+                android:background="@drawable/noadminmainactivity_button_recognize"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="48dp"
                 android:layout_marginRight="48dp"
-                android:text="@string/noadminmain_recognize_button"
+                android:text="@string/noadminmainactivity_button_recognize"
                 android:textColor="#f96300"/>
 
             <Button
-                android:id="@+id/noadminmain_adminlogin"
+                android:id="@+id/noadminmainactivity_button_adminlogin"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/button_adminlogin"
+                android:background="@drawable/noadminmainactivity_button_adminlogin"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:layout_marginLeft="48dp"
                 android:layout_marginRight="48dp"
-                android:text="@string/noadminmain_adminlogin_button"
+                android:text="@string/noadminmainactivity_button_adminlogin"
                 android:textColor="#f96300"/>
         </LinearLayout>
 
@@ -85,10 +85,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:gravity="center"
-                    android:text="@string/noadminmain_noticebar"/>
+                    android:text="@string/noadminmainactivity_textview_noticebar"/>
 
                 <ListView
-                    android:id="@+id/adminnotice_listview"
+                    android:id="@+id/noadminmainactivity_listview_notice"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"></ListView>
 
@@ -100,7 +100,7 @@
                 android:layout_weight="2">
 
                 <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/floatbutton_admininfo"
+                    android:id="@+id/noadminmainactivity_floatingactionbutton_admininfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -108,17 +108,16 @@
                     android:layout_margin="16dp"
                     android:src="@drawable/ic_admin"/>
 
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/admininfo_text"
+                <TextView
+                    android:id="@+id/noadminmainactivity_textview_admininfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
                     android:gravity="right"
-                    android:layout_toLeftOf="@+id/floatbutton_admininfo"
+                    android:layout_toLeftOf="@+id/noadminmainactivity_floatingactionbutton_admininfo"
                     android:layout_alignParentBottom="true"
                     android:layout_margin="16dp" />
             </RelativeLayout>
-
 
         </LinearLayout>
     </LinearLayout>

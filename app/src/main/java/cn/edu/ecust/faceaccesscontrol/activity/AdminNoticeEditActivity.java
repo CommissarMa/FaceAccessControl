@@ -47,8 +47,6 @@ public class AdminNoticeEditActivity extends Toolbar2Activity {
             public void onClick(View v) {
                 if(!noticeEditText.getText().toString().equals("")){
                     db.execSQL("update Notice set noticetext = ? where id = ? ",new String[]{noticeEditText.getText().toString(),index+""});
-                    Intent intent_restartAdminNoticeActivity=new Intent(AdminNoticeEditActivity.this,AdminNoticeActivity.class);
-                    startActivity(intent_restartAdminNoticeActivity);
                     finish();
                 }else{
                     Toast.makeText(AdminNoticeEditActivity.this,"通知内容不能为空",Toast.LENGTH_SHORT).show();

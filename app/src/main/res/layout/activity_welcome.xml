@@ -8,39 +8,39 @@
     tools:context="cn.edu.ecust.faceaccesscontrol.activity.WelcomeActivity">
 
     <ImageView
-        android:id="@+id/welcomeBackground"
+        android:id="@+id/welcomeacticity_imageview_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/welcome_page_background"
+        app:srcCompat="@drawable/welcomeactivity_background"
         android:scaleType="fitXY"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <Button
-        android:id="@+id/welcomeStartButton"
+        android:id="@+id/welcomeacticity_button_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
-        android:text="@string/welcome_start_button"/>
+        android:text="@string/welcomeactivity_button_start"/>
 
     <Button
-        android:id="@+id/welcomeTutorButton"
+        android:id="@+id/welcomeactivity_button_tutor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
-        android:text="@string/welcome_tutor_button"/>
+        android:text="@string/welcomeactivity_button_tutor"/>
 
     <TextClock
+        android:id="@+id/welcomeactivity_textclock_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:id="@+id/textClock"
         android:format24Hour="H:mm"
         android:textSize="16dp"
         android:elevation="0dp" />

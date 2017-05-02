@@ -51,8 +51,6 @@ public class AdminMainActivity extends Toolbar2Activity {
                         break;
                     case R.id.nav_close:
                         Toast.makeText(AdminMainActivity.this,"管理员已注销!",Toast.LENGTH_SHORT).show();
-                        Intent intent_adminActivity=new Intent(AdminMainActivity.this,NoAdminMainActivity.class);
-                        startActivity(intent_adminActivity);
                         finish();
                         break;
                     default:

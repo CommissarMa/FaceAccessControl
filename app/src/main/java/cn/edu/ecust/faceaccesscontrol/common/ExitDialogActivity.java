@@ -13,20 +13,13 @@ import cn.edu.ecust.faceaccesscontrol.manage.AllUseAlertDialog;
  * 取消状态栏
  * 能弹出退出警告框
  * 能对活动进行管理，包括添加一个活动，删除一个活动，删除所有活动
+ * 2017年5月2日09:55:54
  */
-public class ExitDialogActivity extends AppCompatActivity {
+public class ExitDialogActivity extends FullScreenActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);//取消状态栏
-        ActivityCollector.addActivity(this);//添加当前活动到活动集合管理类中
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ActivityCollector.removeActivity(this);//从活动集合管理类中删除当前活动
     }
 
     /**

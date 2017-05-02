@@ -29,6 +29,10 @@ public class AdminNoticeActivity extends Toolbar2Activity {
     private MyDatabaseHelper dbHelper;
     private int noticeCount;
 
+    private AppCompatEditText addNoticeEditText;
+    private ListView showListView;
+    private Button addNoticeButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +40,9 @@ public class AdminNoticeActivity extends Toolbar2Activity {
         Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);//找到工具条
         setSupportActionBar(toolbar);//激活工具条
 
-        final AppCompatEditText addNoticeEditText=(AppCompatEditText)findViewById(R.id.adminnoticepage_addnotice_edittext);
-        Button addNoticeButton=(Button)findViewById(R.id.adminnoticepage_addnotice_button);
-        final ListView showListView=(ListView)findViewById(R.id.adminnoticepage_listview);
+        addNoticeEditText=(AppCompatEditText)findViewById(R.id.adminnoticepage_addnotice_edittext);
+        addNoticeButton=(Button)findViewById(R.id.adminnoticepage_addnotice_button);
+        showListView=(ListView)findViewById(R.id.adminnoticepage_listview);
 
         dbHelper=new MyDatabaseHelper(this,"Face.db",null,1);
         final SQLiteDatabase db=dbHelper.getWritableDatabase();
@@ -108,5 +112,16 @@ public class AdminNoticeActivity extends Toolbar2Activity {
         noticeCount=max;
         String[] noticeArray=noticeArrayList.toArray(new String[noticeArrayList.size()]);
         return  noticeArray;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        dbHelper=new MyDatabaseHelper(this,"Face.db",null,1);
+        final SQLiteDatabase db=dbHelper.getWritableDatabase();
+        String[] noticeArray=getNoticeListViewFromDB(db);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(AdminNoticeActivity.this,android.R.layout.simple_list_item_1,noticeArray);
+        showListView.setAdapter(adapter);
     }
 }

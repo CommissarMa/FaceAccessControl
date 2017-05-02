@@ -72,7 +72,6 @@ public class AllUseAlertDialog {
                 if(pw.equals(pw_sp)){
                     Intent admin_intent=new Intent(activity,AdminMainActivity.class);
                     activity.startActivity(admin_intent);
-                    activity.finish();
                 }
                 else{
                     Toast.makeText(activity,"密码错误，请重试!",Toast.LENGTH_SHORT).show();
@@ -95,9 +94,6 @@ public class AllUseAlertDialog {
                 SQLiteDatabase db=dbHelper.getWritableDatabase();
                 db.delete("Notice","id = ?",new String[]{""+index});
                 db.execSQL("update Notice set id = id-1 where id > ?",new String[]{""+index});
-                Intent intent_newNoticeActivity=new Intent(activity, AdminNoticeActivity.class);
-                activity.startActivity(intent_newNoticeActivity);
-                activity.finish();
             }
         });
         dialog_exit.setNegativeButton(R.string.adminnotice_edit, new DialogInterface.OnClickListener() {//编辑通知按钮
@@ -106,7 +102,6 @@ public class AllUseAlertDialog {
                 Intent intent_newNoticeEditActivity=new Intent(activity, AdminNoticeEditActivity.class);
                 intent_newNoticeEditActivity.putExtra("idIndexInDB",index);//把id的index传过去
                 activity.startActivity(intent_newNoticeEditActivity);
-                activity.finish();
             }
         });
         dialog_exit.show();
