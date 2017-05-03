@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_register_success"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cn.edu.ecust.faceaccesscontrol.activity.RegisterResultActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/registerresultactivity_toolbar_common"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/keepBrown"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        />
+
+    <ImageView
+        android:id="@+id/registerresultactivity_imageview_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_failure"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/registerresultactivity_textview_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/registerresultactivity_imageview_icon"
+        android:text="注册失败！"
+        android:textSize="18dp"
+        />
+
+
+</RelativeLayout>

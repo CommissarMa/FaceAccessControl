@@ -50,10 +50,10 @@ public class CameraRegisterActivity extends FullScreenActivity implements Camera
     private Mat matRgba;//Camera帧，RGBA颜色空间
     private Mat matGray;//Camera帧，灰度图
 
-    String stringUserNo;
-    String stringUserName;
-    String stringUserPassword;
-    String stringUserCellphone;
+    String stringUserNo;//从上一个活动传过来的用户工号
+    String stringUserName;//从上个活动传来的用户名
+    String stringUserPassword;//从上个活动传来的用户密码
+    String stringUserCellphone;//从上个用户传来的手机号
 
     private int intFrameCount=0;//已阅的帧数
     private int intTempFrameCount=0;//上一个被采纳的帧数
@@ -203,9 +203,24 @@ public class CameraRegisterActivity extends FullScreenActivity implements Camera
                     e.printStackTrace();
                 }
             }else{
-                finish();
+                //开启新活动
+                Intent intentRegisterResultActivity=new Intent(CameraRegisterActivity.this,RegisterResultActivity.class);
+                intentRegisterResultActivity.putExtra("userNo",stringUserNo);
+                intentRegisterResultActivity.putExtra("userName",stringUserName);
+                intentRegisterResultActivity.putExtra("userPassword",stringUserPassword);
+                intentRegisterResultActivity.putExtra("userCellphone",stringUserCellphone);
+                intentRegisterResultActivity.putExtra("isRegisterSuccess",true);
+                startActivity(intentRegisterResultActivity);
+                finish();//关闭当前Camera Activity
             }
+        }
 
+        //如果超过200帧还没有检测完，即为注册失败
+        if(intFrameCount>200){
+            Intent intentRegisterResultActivity=new Intent(CameraRegisterActivity.this,RegisterResultActivity.class);
+            intentRegisterResultActivity.putExtra("isRegisterSuccess",false);
+            startActivity(intentRegisterResultActivity);
+            finish();//关闭当前Camera Activity
         }
 
         return matRgba;

@@ -38,12 +38,15 @@
     <string name="adminconfig_location_text">地址</string>
     <string name="adminconfig_mail_text">邮箱</string>
     <string name="adminconfig_saveconfig_button">保存修改</string>
-    <string name="adminmain_noticemanage">通知管理</string>
-    <string name="adminmain_usermanage">用户管理</string>
+    <string name="adminmainactivity_button_noticemanage">通知管理</string>
+    <string name="adminmainactivity_button_usermanage">用户管理</string>
+    <string name="adminmainactivity_button_approveregister">审批注册</string>
     <string name="adminnotice_label">通知管理</string>
     <string name="adminnotice_edit">编辑</string>
     <string name="adminnotice_delete">删除</string>
     <string name="adminnotice_add">添加新通知</string>
     <string name="adminnoticeedit_label">编辑公告</string>
     <string name="adminnoticeedit_savechange_button">保存修改</string>
+    <string name="registerresultactivity_label_title">注册结果</string>
+    <string name="adminusermanageactivity_label_title">用户管理</string>
 </resources>

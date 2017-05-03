@@ -46,9 +46,16 @@
             android:name=".activity.AdminNoticeEditActivity"
             android:label="@string/adminnoticeedit_label"
             android:screenOrientation="landscape" />
-
-        <activity android:name=".activity.CameraRegisterActivity"
+        <activity
+            android:name=".activity.CameraRegisterActivity"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.RegisterResultActivity"
+            android:label="@string/registerresultactivity_label_title"
+            android:screenOrientation="landscape" />
+        <activity android:name=".activity.AdminUserManageActivity"
+            android:label="@string/adminusermanageactivity_label_title"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

@@ -31,8 +31,8 @@ public class AdminMainActivity extends Toolbar2Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main);
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);//找到工具条
-        setSupportActionBar(toolbar);//激活工具条
+        Toolbar toolbarCommon=(Toolbar)findViewById(R.id.adminmainactivity_toolbar_common);//找到工具条
+        setSupportActionBar(toolbarCommon);//激活工具条
         super.mDrawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout_adminpage);
         ActionBar actionBar=getSupportActionBar();
         if(actionBar!=null){
@@ -66,16 +66,24 @@ public class AdminMainActivity extends Toolbar2Activity {
         navView.getMenu().findItem(R.id.nav_location).setTitle(pref.getString("admin_location","").equals("")?"地址":pref.getString("admin_location",""));
         navView.getMenu().findItem(R.id.nav_mail).setTitle(pref.getString("admin_mail","").equals("")?"邮箱":pref.getString("admin_mail",""));
 
-        Button noticeManageButton=(Button)findViewById(R.id.adminmain_noticemanage_button);//通知管理按钮
-        Button userManageButton=(Button)findViewById(R.id.adminmain_usermanage_button);//用户管理按钮
-        noticeManageButton.setOnClickListener(new View.OnClickListener() {
+        Button buttonNoticeManage=(Button)findViewById(R.id.adminmainactivity_button_noticemanage);//通知管理按钮
+        Button buttonUserManage=(Button)findViewById(R.id.adminmainactivity_button_usermanage);//用户管理按钮
+        Button buttonApproveRegister=(Button)findViewById(R.id.adminmainactivity_button_approveregister);//审批注册按钮
+        buttonNoticeManage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent_noticemanage=new Intent(AdminMainActivity.this,AdminNoticeActivity.class);
-                startActivity(intent_noticemanage);
+                Intent intentAdminNoticeActivity=new Intent(AdminMainActivity.this,AdminNoticeActivity.class);
+                startActivity(intentAdminNoticeActivity);
             }
         });
-        userManageButton.setOnClickListener(new View.OnClickListener() {
+        buttonUserManage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentAdminUserManageActivity=new Intent(AdminMainActivity.this,AdminUserManageActivity.class);
+                startActivity(intentAdminUserManageActivity);
+            }
+        });
+        buttonApproveRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
