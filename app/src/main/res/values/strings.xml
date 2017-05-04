@@ -49,4 +49,11 @@
     <string name="adminnoticeedit_savechange_button">保存修改</string>
     <string name="registerresultactivity_label_title">注册结果</string>
     <string name="adminusermanageactivity_label_title">用户管理</string>
+    <string name="adminuserdetialactivity_label_title">用户详情</string>
+    <string name="adminuserdetialactivity_textview_userno">工号</string>
+    <string name="adminuserdetialactivity_textview_username">姓名</string>
+    <string name="adminuserdetialactivity_textview_usercellphone">手机号码</string>
+    <string name="adminuserapproveactivity_label_title">审批注册</string>
+    <string name="adminapprovedetailactivity_label_title">注册详情</string>
+    <string name="calculateactivity_label_title">识别结果</string>
 </resources>

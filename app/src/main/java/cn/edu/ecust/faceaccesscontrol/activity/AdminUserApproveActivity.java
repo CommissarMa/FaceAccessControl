@@ -16,19 +16,20 @@ import java.util.List;
 import cn.edu.ecust.faceaccesscontrol.R;
 import cn.edu.ecust.faceaccesscontrol.common.Toolbar2Activity;
 import cn.edu.ecust.faceaccesscontrol.manage.MyDatabaseHelper;
+import cn.edu.ecust.faceaccesscontrol.userrecycler.ApproveUserCardAdapter;
 import cn.edu.ecust.faceaccesscontrol.userrecycler.UserCard;
 import cn.edu.ecust.faceaccesscontrol.userrecycler.UserCardAdapter;
 
-public class AdminUserManageActivity extends Toolbar2Activity {
+public class AdminUserApproveActivity extends Toolbar2Activity {
 
     private List<UserCard> userCardList=new ArrayList<>();
-    private UserCardAdapter adapter;
+    private ApproveUserCardAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_user_manage);
-        Toolbar toolbarCommon=(Toolbar)findViewById(R.id.adminusermanageactivity_toolbar_common);//找到工具条
+        setContentView(R.layout.activity_admin_user_approve);
+        Toolbar toolbarCommon=(Toolbar)findViewById(R.id.adminuserapproveactivity_toolbar_common);//找到工具条
         setSupportActionBar(toolbarCommon);//激活工具条
     }
 
@@ -42,18 +43,18 @@ public class AdminUserManageActivity extends Toolbar2Activity {
         getAllUserNoFromDB();//这时候userCardList就有数据了
 
         //填充RecyclerView
-        RecyclerView recyclerView=(RecyclerView)findViewById(R.id.adminusermanageactivity_recyclerview_main);
+        RecyclerView recyclerView=(RecyclerView)findViewById(R.id.adminuserapproveactivity_recyclerview_main);
         GridLayoutManager layoutManager=new GridLayoutManager(this,4);//设置每行显示的card数量
         recyclerView.setLayoutManager(layoutManager);
-        adapter=new UserCardAdapter(userCardList);
+        adapter=new ApproveUserCardAdapter(userCardList);
         recyclerView.setAdapter(adapter);
     }
 
     private void getAllUserNoFromDB(){
         File faceDir = getDir("face", Context.MODE_PRIVATE);//有此目录就获取，没有就创建
-        MyDatabaseHelper dbHelper=new MyDatabaseHelper(AdminUserManageActivity.this,"Face.db",null,1);
+        MyDatabaseHelper dbHelper=new MyDatabaseHelper(AdminUserApproveActivity.this,"Face.db",null,1);
         SQLiteDatabase db=dbHelper.getWritableDatabase();
-        Cursor cursor=db.rawQuery("select no from User where grant = 1",null);
+        Cursor cursor=db.rawQuery("select no from User where grant = 0",null);
         if(cursor.moveToFirst()){
             do{
                 String userNo=cursor.getString(cursor.getColumnIndex("no"));

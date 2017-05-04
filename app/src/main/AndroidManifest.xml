@@ -53,8 +53,26 @@
             android:name=".activity.RegisterResultActivity"
             android:label="@string/registerresultactivity_label_title"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.AdminUserManageActivity"
+        <activity
+            android:name=".activity.AdminUserManageActivity"
             android:label="@string/adminusermanageactivity_label_title"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.AdminUserDetialActivity"
+            android:label="@string/adminuserdetialactivity_label_title"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.AdminUserApproveActivity"
+            android:label="@string/adminuserapproveactivity_label_title"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity.AdminApproveDetailActivity"
+            android:label="@string/adminapprovedetailactivity_label_title"
+            android:screenOrientation="landscape" />
+        <activity android:name=".activity.CameraRecognizeActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".activity.CalculateActivity"
+            android:label="@string/calculateactivity_label_title"
             android:screenOrientation="landscape"/>
     </application>
 

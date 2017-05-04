@@ -86,7 +86,8 @@ public class AdminMainActivity extends Toolbar2Activity {
         buttonApproveRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intentAdminUserApproveActivity=new Intent(AdminMainActivity.this,AdminUserApproveActivity.class);
+                startActivity(intentAdminUserApproveActivity);
             }
         });
 

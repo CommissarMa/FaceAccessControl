@@ -1,6 +1,5 @@
 package cn.edu.ecust.faceaccesscontrol.userrecycler;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
@@ -10,21 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 import cn.edu.ecust.faceaccesscontrol.R;
+import cn.edu.ecust.faceaccesscontrol.activity.AdminApproveDetailActivity;
 import cn.edu.ecust.faceaccesscontrol.activity.AdminUserDetialActivity;
 
 /**
- * Created by CommissarMa on 2017/5/3.
+ * Created by CommissarMa on 2017/5/4.
  */
 
-public class UserCardAdapter extends RecyclerView.Adapter<UserCardAdapter.ViewHolder> {
-
+public class ApproveUserCardAdapter extends RecyclerView.Adapter<ApproveUserCardAdapter.ViewHolder> {
     private Context mContext;
     private List<UserCard> mUserCardList;
 
@@ -41,33 +39,33 @@ public class UserCardAdapter extends RecyclerView.Adapter<UserCardAdapter.ViewHo
         }
     }
 
-    public UserCardAdapter(List<UserCard> userCardList){
+    public ApproveUserCardAdapter(List<UserCard> userCardList){
         mUserCardList=userCardList;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ApproveUserCardAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if(mContext==null){
             mContext=parent.getContext();
         }
         View view= LayoutInflater.from(mContext).inflate(R.layout.usercard_item,parent,false);
-        final ViewHolder holder=new ViewHolder(view);
+        final ApproveUserCardAdapter.ViewHolder holder=new ApproveUserCardAdapter.ViewHolder(view);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position=holder.getAdapterPosition();
                 UserCard userCard=mUserCardList.get(position);
                 //Toast.makeText(v.getContext(),userCard.getStringUserNo(),Toast.LENGTH_SHORT).show();
-                Intent intentAdminUserDetialActivity=new Intent(v.getContext(), AdminUserDetialActivity.class);
-                intentAdminUserDetialActivity.putExtra("userNo",userCard.getStringUserNo());
-                mContext.startActivity(intentAdminUserDetialActivity);
+                Intent intentAdminApproveDetailActivity=new Intent(v.getContext(), AdminApproveDetailActivity.class);
+                intentAdminApproveDetailActivity.putExtra("userNo",userCard.getStringUserNo());
+                mContext.startActivity(intentAdminApproveDetailActivity);
             }
         });
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ApproveUserCardAdapter.ViewHolder holder, int position) {
         UserCard userCard=mUserCardList.get(position);
         holder.userNo.setText(userCard.getStringUserNo());
         Glide.with(mContext).load(userCard.getStringUserFacePath()).into(holder.faceImage);

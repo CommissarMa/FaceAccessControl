@@ -70,7 +70,8 @@ public class NoAdminMainActivity extends Toolbar2Activity {
         buttonRecognize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intentCameraRecognizeActivity=new Intent(NoAdminMainActivity.this,CameraRecognizeActivity.class);
+                startActivity(intentCameraRecognizeActivity);//打开摄像头识别人脸的视图
             }
         });
         //点击管理员登录按钮
