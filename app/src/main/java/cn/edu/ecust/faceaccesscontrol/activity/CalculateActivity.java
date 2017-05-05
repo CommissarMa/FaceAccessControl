@@ -79,13 +79,19 @@ public class CalculateActivity extends Toolbar2Activity {
         readUserNoFromDB();
 
         //判断人数，少于5个进行分支
-
-        //Opencv中的Pca
-        pca(10);
-
-        //libsvm
-        libsvm(10);
-
+        if(peopleCount==0){
+            Toast.makeText(CalculateActivity.this,"当前没有用户！请先注册！",Toast.LENGTH_SHORT).show();
+        }else if(peopleCount<5){
+            //Opencv中的Pca
+            pca(peopleCount*5);
+            //libsvm
+            libsvm(peopleCount*5);
+        }else if(peopleCount>=5){
+            //Opencv中的Pca
+            pca(25);
+            //libsvm
+            libsvm(25);
+        }
     }
 
     @Override

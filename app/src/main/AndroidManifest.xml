@@ -77,8 +77,12 @@
             android:name=".activity.CalculateActivity"
             android:label="@string/calculateactivity_label_title"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.ResultActivity"
+        <activity
+            android:name=".activity.ResultActivity"
             android:label="@string/resultactivity_label_title"
+            android:screenOrientation="landscape" />
+        <activity android:name=".activity.PasswordLoginActivity"
+            android:label="@string/passwordloginactivity_label_title"
             android:screenOrientation="landscape"/>
     </application>
 

@@ -56,10 +56,12 @@
                 android:layout_margin="8dp"
                 android:layout_weight="5">
                 <TextView
+                    android:id="@+id/registernewuseractivity_textview_userno"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text=""
-                    android:gravity="center_vertical|left"/>
+                    android:gravity="center_vertical|left"
+                    android:textColor="@color/red"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -97,10 +99,12 @@
                 android:layout_margin="8dp"
                 android:layout_weight="5">
                 <TextView
+                    android:id="@+id/registernewuseractivity_textview_username"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text=""
-                    android:gravity="center_vertical|left"/>
+                    android:gravity="center_vertical|left"
+                    android:textColor="@color/red"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -139,10 +143,12 @@
                 android:layout_margin="8dp"
                 android:layout_weight="5">
                 <TextView
+                    android:id="@+id/registernewuseractivity_textview_userpassword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text=""
-                    android:gravity="center_vertical|left"/>
+                    android:gravity="center_vertical|left"
+                    android:textColor="@color/red"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -181,10 +187,12 @@
                 android:layout_margin="8dp"
                 android:layout_weight="5">
                 <TextView
+                    android:id="@+id/registernewuseractivity_textview_userconfirmpassword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text=""
-                    android:gravity="center_vertical|left"/>
+                    android:gravity="center_vertical|left"
+                    android:textColor="@color/red"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -222,10 +230,12 @@
                 android:layout_margin="8dp"
                 android:layout_weight="5">
                 <TextView
+                    android:id="@+id/registernewuseractivity_textview_usercellphone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text=""
-                    android:gravity="center_vertical|left"/>
+                    android:gravity="center_vertical|left"
+                    android:textColor="@color/red"/>
             </LinearLayout>
         </LinearLayout>
 

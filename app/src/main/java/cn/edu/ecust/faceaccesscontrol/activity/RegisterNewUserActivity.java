@@ -30,6 +30,12 @@ public class RegisterNewUserActivity extends Toolbar2Activity {
     private EditText textViewUserCellphone;//用户手机号码
     private Button buttonNextStep;//下一步按钮
 
+    private TextView tUserNo;
+    private TextView tUserName;
+    private TextView tUserPassword;
+    private TextView tUserConfirmPassword;
+    private TextView tUserCellphone;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,16 +51,52 @@ public class RegisterNewUserActivity extends Toolbar2Activity {
         textViewUserCellphone=(EditText)findViewById(R.id.registernewuseractivity_edittext_usercellphone);
         buttonNextStep=(Button)findViewById(R.id.registernewuseractivity_button_nextstep);
 
+        tUserNo=(TextView)findViewById(R.id.registernewuseractivity_textview_userno);
+        tUserName=(TextView)findViewById(R.id.registernewuseractivity_textview_username);
+        tUserPassword=(TextView)findViewById(R.id.registernewuseractivity_textview_userpassword);
+        tUserConfirmPassword=(TextView)findViewById(R.id.registernewuseractivity_textview_userconfirmpassword);
+        tUserCellphone=(TextView)findViewById(R.id.registernewuseractivity_textview_usercellphone);
+
         //点击下一步按钮触发事件
         buttonNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentCameraRegister=new Intent(RegisterNewUserActivity.this,CameraRegisterActivity.class);
-                intentCameraRegister.putExtra("userNo",textViewUserNo.getText().toString());
-                intentCameraRegister.putExtra("userName",textViewUserName.getText().toString());
-                intentCameraRegister.putExtra("userPassword",textViewUserPassword.getText().toString());
-                intentCameraRegister.putExtra("userCellphone",textViewUserCellphone.getText().toString());
-                startActivity(intentCameraRegister);
+                tUserNo.setText("");
+                tUserName.setText("");
+                tUserPassword.setText("");
+                tUserConfirmPassword.setText("");
+                tUserCellphone.setText("");
+                boolean b=true;
+                //判断各个输入框的输入是否正确
+                if(textViewUserNo.getText().toString().equals("")){
+                    tUserNo.setText("不能为空");
+                    b=false;
+                }
+                if(textViewUserName.getText().toString().equals("")){
+                    tUserName.setText("不能为空");
+                    b=false;
+                }
+                if(textViewUserPassword.getText().toString().equals("")){
+                    tUserPassword.setText("不能为空");
+                    b=false;
+                }
+                if(!textViewUserConfirmPassword.getText().toString().equals(textViewUserPassword.getText().toString())){
+                    tUserConfirmPassword.setText("两次密码输入不同");
+                    b=false;
+                }
+                if(textViewUserCellphone.getText().toString().equals("")){
+                    tUserCellphone.setText("不能为空");
+                    b=false;
+                }
+
+                if(b==true) {
+                    Intent intentCameraRegister = new Intent(RegisterNewUserActivity.this, CameraRegisterActivity.class);
+                    intentCameraRegister.putExtra("userNo", textViewUserNo.getText().toString());
+                    intentCameraRegister.putExtra("userName", textViewUserName.getText().toString());
+                    intentCameraRegister.putExtra("userPassword", textViewUserPassword.getText().toString());
+                    intentCameraRegister.putExtra("userCellphone", textViewUserCellphone.getText().toString());
+                    startActivity(intentCameraRegister);
+                }
             }
         });
     }

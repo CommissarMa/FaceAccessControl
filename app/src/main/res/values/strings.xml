@@ -57,4 +57,5 @@
     <string name="adminapprovedetailactivity_label_title">注册详情</string>
     <string name="calculateactivity_label_title">识别结果</string>
     <string name="resultactivity_label_title">识别结果</string>
+    <string name="passwordloginactivity_label_title">使用密码</string>
 </resources>

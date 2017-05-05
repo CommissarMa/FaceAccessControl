@@ -43,7 +43,8 @@
                     android:layout_below="@+id/resultactivity_textview_success"
                     android:layout_margin="5dp"
                     android:layout_centerHorizontal="true"
-                    android:background="@color/buttonWhite"/>
+                    android:background="@color/buttonWhite"
+                    android:text="返回"/>
             </RelativeLayout>
         </LinearLayout>
         <LinearLayout
@@ -81,7 +82,8 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_margin="5dp"
-                    android:background="@color/buttonWhite"/>
+                    android:background="@color/buttonWhite"
+                    android:text="重试"/>
                 <Button
                     android:id="@+id/resultactivity_button_failurepassword"
                     android:layout_width="wrap_content"
@@ -89,7 +91,8 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
                     android:layout_margin="5dp"
-                    android:background="@color/buttonWhite"/>
+                    android:background="@color/buttonWhite"
+                    android:text="使用密码"/>
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
