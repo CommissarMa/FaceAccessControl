@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.edu.ecust.faceaccesscontrol">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -69,10 +70,15 @@
             android:name=".activity.AdminApproveDetailActivity"
             android:label="@string/adminapprovedetailactivity_label_title"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.CameraRecognizeActivity"
+        <activity
+            android:name=".activity.CameraRecognizeActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.CalculateActivity"
+        <activity
+            android:name=".activity.CalculateActivity"
             android:label="@string/calculateactivity_label_title"
+            android:screenOrientation="landscape" />
+        <activity android:name=".activity.ResultActivity"
+            android:label="@string/resultactivity_label_title"
             android:screenOrientation="landscape"/>
     </application>
 
