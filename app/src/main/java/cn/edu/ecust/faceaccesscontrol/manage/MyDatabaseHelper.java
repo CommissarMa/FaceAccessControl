@@ -29,6 +29,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             +"cellphone text, "
             +"grant text)";
 
+    /**
+     * 创建识别记录表
+     */
+    public static final String CREATE_TEST="create table Test ("
+            +"testname text primary key)";
+
     //上下文对象：说明是哪个上下文（活动是其中一种）调用数据库
     private Context mContext;
 
@@ -48,6 +54,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_NOTICE);
         db.execSQL(CREATE_USER);
+        db.execSQL(CREATE_TEST);
         Toast.makeText(mContext,"创建数据库成功！",Toast.LENGTH_SHORT).show();
     }
 

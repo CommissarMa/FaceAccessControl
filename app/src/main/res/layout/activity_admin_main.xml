@@ -24,17 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
-            <Button
-                android:id="@+id/adminmainactivity_button_noticemanage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginTop="64dp"
-                android:layout_marginBottom="64dp"
-                android:layout_marginLeft="64dp"
-                android:layout_marginRight="32dp"
-                android:background="@color/buttonWhite"
-                android:text="@string/adminmainactivity_button_noticemanage"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,7 +32,35 @@
                 android:layout_marginTop="64dp"
                 android:layout_marginBottom="64dp"
                 android:layout_marginLeft="32dp"
-                android:layout_marginRight="64dp"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/adminmainactivity_button_noticemanage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/buttonWhite"
+                    android:text="@string/adminmainactivity_button_noticemanage"/>
+                <Button
+                    android:id="@+id/adminmainactivity_button_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/buttonWhite"
+                    android:text="@string/adminmainactivity_button_history"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginTop="64dp"
+                android:layout_marginBottom="64dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="32dp"
                 android:orientation="vertical">
 
                 <Button

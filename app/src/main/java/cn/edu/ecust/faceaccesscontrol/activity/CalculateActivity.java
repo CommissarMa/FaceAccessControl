@@ -72,8 +72,7 @@ public class CalculateActivity extends Toolbar2Activity {
         progressDialog=new ProgressDialog(CalculateActivity.this);
         progressDialog.setTitle("进度对话框");
         progressDialog.setMessage("正在识别...");
-        progressDialog.setCancelable(false);//设置是否可以手动关闭这个对话框
-        progressDialog.show();
+        progressDialog.setCancelable(true);//设置是否可以手动关闭这个对话框
 
         //先从数据库中读取所有用户（grant=1）
         readUserNoFromDB();
@@ -82,11 +81,13 @@ public class CalculateActivity extends Toolbar2Activity {
         if(peopleCount==0){
             Toast.makeText(CalculateActivity.this,"当前没有用户！请先注册！",Toast.LENGTH_SHORT).show();
         }else if(peopleCount<5){
+            progressDialog.show();
             //Opencv中的Pca
             pca(peopleCount*5);
             //libsvm
             libsvm(peopleCount*5);
         }else if(peopleCount>=5){
+            progressDialog.show();
             //Opencv中的Pca
             pca(25);
             //libsvm

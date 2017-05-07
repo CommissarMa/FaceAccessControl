@@ -39,6 +39,7 @@
     <string name="adminconfig_mail_text">邮箱</string>
     <string name="adminconfig_saveconfig_button">保存修改</string>
     <string name="adminmainactivity_button_noticemanage">通知管理</string>
+    <string name="adminmainactivity_button_history">识别记录</string>
     <string name="adminmainactivity_button_usermanage">用户管理</string>
     <string name="adminmainactivity_button_approveregister">审批注册</string>
     <string name="adminnotice_label">通知管理</string>
@@ -58,4 +59,5 @@
     <string name="calculateactivity_label_title">识别结果</string>
     <string name="resultactivity_label_title">识别结果</string>
     <string name="passwordloginactivity_label_title">使用密码</string>
+    <string name="historyactivity_label_title">识别记录</string>
 </resources>

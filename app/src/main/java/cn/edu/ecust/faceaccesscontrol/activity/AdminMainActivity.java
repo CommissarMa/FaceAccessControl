@@ -67,6 +67,7 @@ public class AdminMainActivity extends Toolbar2Activity {
         navView.getMenu().findItem(R.id.nav_mail).setTitle(pref.getString("admin_mail","").equals("")?"邮箱":pref.getString("admin_mail",""));
 
         Button buttonNoticeManage=(Button)findViewById(R.id.adminmainactivity_button_noticemanage);//通知管理按钮
+        Button buttonHistory=(Button)findViewById(R.id.adminmainactivity_button_history);//识别记录
         Button buttonUserManage=(Button)findViewById(R.id.adminmainactivity_button_usermanage);//用户管理按钮
         Button buttonApproveRegister=(Button)findViewById(R.id.adminmainactivity_button_approveregister);//审批注册按钮
         buttonNoticeManage.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +75,13 @@ public class AdminMainActivity extends Toolbar2Activity {
             public void onClick(View v) {
                 Intent intentAdminNoticeActivity=new Intent(AdminMainActivity.this,AdminNoticeActivity.class);
                 startActivity(intentAdminNoticeActivity);
+            }
+        });
+        buttonHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentHistory=new Intent(AdminMainActivity.this,HistoryActivity.class);
+                startActivity(intentHistory);
             }
         });
         buttonUserManage.setOnClickListener(new View.OnClickListener() {

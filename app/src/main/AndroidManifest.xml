@@ -81,9 +81,13 @@
             android:name=".activity.ResultActivity"
             android:label="@string/resultactivity_label_title"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.PasswordLoginActivity"
+        <activity
+            android:name=".activity.PasswordLoginActivity"
             android:label="@string/passwordloginactivity_label_title"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
+        <activity android:name=".activity.HistoryActivity"
+            android:label="@string/historyactivity_label_title"
+            android:screenOrientation="landscape" ></activity>
     </application>
 
 </manifest>

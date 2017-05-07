@@ -94,11 +94,14 @@ public class AllUseAlertDialog {
         dialog_exit.setPositiveButton(R.string.adminnotice_delete, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {//删除通知按钮
-                Toast.makeText(activity,index+"",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(activity,index+"",Toast.LENGTH_SHORT).show();
                 MyDatabaseHelper dbHelper=new MyDatabaseHelper(activity,"Face.db",null,1);
                 SQLiteDatabase db=dbHelper.getWritableDatabase();
                 db.delete("Notice","id = ?",new String[]{""+index});
                 db.execSQL("update Notice set id = id-1 where id > ?",new String[]{""+index});
+                Intent intent=new Intent(activity,AdminNoticeActivity.class);
+                activity.startActivity(intent);
+                activity.finish();
             }
         });
         dialog_exit.setNegativeButton(R.string.adminnotice_edit, new DialogInterface.OnClickListener() {//编辑通知按钮

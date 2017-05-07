@@ -28,12 +28,15 @@ import org.opencv.core.Point;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
+import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.edu.ecust.faceaccesscontrol.R;
 import cn.edu.ecust.faceaccesscontrol.common.FullScreenActivity;
@@ -46,7 +49,9 @@ import cn.edu.ecust.faceaccesscontrol.common.FullScreenActivity;
 public class CameraRegisterActivity extends FullScreenActivity implements CameraBridgeViewBase.CvCameraViewListener2{
 
     private CameraBridgeViewBase cameraBridgeViewBaseOpencv;//Camera视图
-    private CascadeClassifier cascadeClassifierOpencv;//级联分类器
+    private CascadeClassifier cascadeClassifierOpencv;//级联分类器，脸分类器
+    private CascadeClassifier eyeDetector;//双眼分类器
+    private Mat eyeglasses;//眼镜图片
     private Mat matRgba;//Camera帧，RGBA颜色空间
     private Mat matGray;//Camera帧，灰度图
 
@@ -83,6 +88,37 @@ public class CameraRegisterActivity extends FullScreenActivity implements Camera
                             Toast.makeText(CameraRegisterActivity.this,"级联分类器加载失败！",Toast.LENGTH_SHORT).show();
                             cascadeClassifierOpencv=null;
                         }
+                        //存储eye分类器
+                        InputStream cascadeInputStream1=getResources().openRawResource(R.raw.haarcascade_mcs_eyepair_big);//从项目资源中读入级联分类器是，输入流
+                        File cascadeDir1=getDir("cascade", Context.MODE_PRIVATE);//有此目录就获取，没有就创建
+                        File cascadeFile1=new File(cascadeDir1,"cascadeeye.xml");//新建一个cascade.xml文件
+                        FileOutputStream cascadeOutputStream1=new FileOutputStream(cascadeFile1);//创建一个输出流
+                        byte[] buffer1=new byte[4096];//字节数组
+                        int bytesRead1;//待会用来记录输入流返回的字节数
+                        while((bytesRead1=cascadeInputStream1.read(buffer1))!=-1){//也就是读进字符数组的字符个数，范围为0到字符数组长度的最大值
+                            cascadeOutputStream1.write(buffer1,0,bytesRead1);//写入到cascade.xml文件
+                        }
+                        cascadeInputStream1.close();//关闭输入流
+                        cascadeOutputStream1.close();//关闭输出流
+                        //从android设备的文件系统中载入cascade.xml
+                        eyeDetector=new CascadeClassifier(cascadeFile1.getAbsolutePath());
+                        if(eyeDetector.empty()){
+                            Toast.makeText(CameraRegisterActivity.this,"级联分类器加载失败！",Toast.LENGTH_SHORT).show();
+                            eyeDetector=null;
+                        }
+                        //存储眼镜图像
+                        InputStream cascadeInputStream2=getResources().openRawResource(R.raw.eyeglasses);//从项目资源中读入级联分类器是，输入流
+                        File cascadeDir2=getDir("cascade", Context.MODE_PRIVATE);//有此目录就获取，没有就创建
+                        File cascadeFile2=new File(cascadeDir2,"glasses.jpg");//新建一个cascade.xml文件
+                        FileOutputStream cascadeOutputStream2=new FileOutputStream(cascadeFile2);//创建一个输出流
+                        byte[] buffer2=new byte[4096];//字节数组
+                        int bytesRead2;//待会用来记录输入流返回的字节数
+                        while((bytesRead2=cascadeInputStream2.read(buffer2))!=-1){//也就是读进字符数组的字符个数，范围为0到字符数组长度的最大值
+                            cascadeOutputStream2.write(buffer2,0,bytesRead2);//写入到cascade.xml文件
+                        }
+                        cascadeInputStream2.close();//关闭输入流
+                        cascadeOutputStream2.close();//关闭输出流
+                        eyeglasses= Imgcodecs.imread(cascadeFile2.getAbsolutePath(),Imgcodecs.IMREAD_COLOR);
                     }
                     catch (Exception e){
                         Toast.makeText(CameraRegisterActivity.this,"级联分类器加载失败！",Toast.LENGTH_SHORT).show();
@@ -152,6 +188,7 @@ public class CameraRegisterActivity extends FullScreenActivity implements Camera
         intFrameCount++;
         matGray=inputFrame.gray();//转灰度
         matRgba=inputFrame.rgba();//转彩色
+        Boolean hasEye=false;//是否有眼睛
 
         //在帧中检测人脸
         MatOfRect matOfRectFace=new MatOfRect();
@@ -171,12 +208,26 @@ public class CameraRegisterActivity extends FullScreenActivity implements Camera
         }
         if(rectMaxFace!=null) {
             Imgproc.rectangle(matRgba, rectMaxFace.tl(), rectMaxFace.br(), new Scalar(255, 0, 0, 0), 3);//红色，最大的人脸
+
+            //找眼睛
+            MatOfRect eyeDetection=new MatOfRect();
+            Rect eyeRect=rectMaxFace;//在该范围内寻找眼睛
+            Mat subMGray=matGray.submat(eyeRect);
+            eyeDetector.detectMultiScale(subMGray,eyeDetection);
+            Rect[] eyeAreaArray=eyeDetection.toArray();
+            Rect eyeArea;
+            if(eyeAreaArray.length>0){
+                hasEye=true;
+                Log.e("camera", "检测到眼睛");
+                eyeArea=eyeAreaArray[0];
+                Imgproc.rectangle(matRgba,new Point(rectMaxFace.x+eyeArea.x,rectMaxFace.y+eyeArea.y),new Point(rectMaxFace.x+eyeArea.x+eyeArea.width,rectMaxFace.y+eyeArea.y+eyeArea.height),new Scalar(255,0,0),2);
+            }
         }
         //Imgproc.rectangle(mRgba,new Point(500,80),new Point(1420,1000),new Scalar(0,255,0),3);//绿色，事先设定引导框
         Core.flip(matRgba,matRgba,1);//对称变化，类似平面镜成像
 
         //我挑出第一个人脸进行保存
-        if(rectMaxFace!=null && intFrameCount>(intTempFrameCount+10) && ((int)rectMaxFace.br().x-(int)rectMaxFace.tl().x>=500)) {//有人脸，超过20帧，并且人脸大小大于500*500
+        if(rectMaxFace!=null && hasEye==true && intFrameCount>(intTempFrameCount+6) && ((int)rectMaxFace.br().x-(int)rectMaxFace.tl().x>=500)) {//有人脸，超过20帧，并且人脸大小大于500*500
             intTempFrameCount=intFrameCount;
             int rs=(int)rectMaxFace.tl().x;//人脸外接矩形左上顶点x坐标
             int cs=(int)rectMaxFace.tl().y;
@@ -244,5 +295,41 @@ public class CameraRegisterActivity extends FullScreenActivity implements Camera
             cameraBridgeViewBaseOpencv.disableView();
         }
         finish();
+    }
+
+    public static Mat resize(Mat source,int sizeX,int sizeY){
+
+        Mat destination=new Mat(sizeX,sizeY,source.type());
+        Imgproc.resize(source, destination,destination.size(), sizeX,sizeY,0);
+        return destination;
+
+    }
+
+    public static Mat merge(Mat source){
+
+        Mat mask2=new Mat();
+        Mat dst=new Mat();
+
+        Imgproc.cvtColor(source,mask2,Imgproc.COLOR_BGR2GRAY);
+        Imgproc.threshold(mask2,mask2,230,255,Imgproc.THRESH_BINARY_INV);
+        List<Mat> planes = new ArrayList<Mat>() ;
+        List<Mat> result = new ArrayList<Mat>() ;
+        Mat result1=new Mat();
+        Mat result2=new Mat();
+        Mat result3=new Mat();
+
+        Core.split(source, planes);
+
+        Core.bitwise_and(planes.get(0), mask2, result1);
+        Core.bitwise_and(planes.get(1), mask2, result2);
+        Core.bitwise_and(planes.get(2), mask2, result3);
+
+        result.add(result1);
+        result.add(result2);
+        result.add(result3);
+        Core.merge(result, dst);
+        //以上白色变透明
+        return dst;
+
     }
 }
