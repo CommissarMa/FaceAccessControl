@@ -83,9 +83,11 @@ public class CalculateActivity extends Toolbar2Activity {
         }else if(peopleCount<5){
             progressDialog.show();
             //Opencv中的Pca
-            pca(peopleCount*5);
+            //pca(peopleCount*5);
+            pca(5);
             //libsvm
-            libsvm(peopleCount*5);
+            //libsvm(peopleCount*5);
+            libsvm(5);
         }else if(peopleCount>=5){
             progressDialog.show();
             //Opencv中的Pca
@@ -123,6 +125,53 @@ public class CalculateActivity extends Toolbar2Activity {
         cursor.close();
     }
 
+    public int pow(int value,int n){
+        int result=1;
+        for(int i=0;i<n;i++){
+            result=result*value;
+        }
+        return result;
+    }
+
+    public Mat lbp(Mat src){
+        Mat dst=new Mat(src.height()-2,src.width()-2,CvType.CV_32FC1);//实际应该为8位二进制数
+
+        for(int i=1;i<src.height()-1;i++){
+            for(int j=1;j<src.width()-1;j++){
+                //3*3的范围进行判断
+                double center=src.get(i, j)[0];
+                int result=0;
+
+                double[] d=new double[8];
+                int[] r=new int[8];
+
+                d[0]=src.get(i-1, j-1)[0];
+                d[1]=src.get(i-1, j)[0];
+                d[2]=src.get(i-1, j+1)[0];
+                d[3]=src.get(i, j+1)[0];
+                d[4]=src.get(i+1, j+1)[0];
+                d[5]=src.get(i+1, j)[0];
+                d[6]=src.get(i+1, j-1)[0];
+                d[7]=src.get(i, j-1)[0];
+
+                for(int start=0;start<8;start++){
+                    if(d[start]>center){
+                        r[start]=1;
+                    }else{
+                        r[start]=0;
+                    }
+                }
+
+                for(int start=0;start<8;start++){
+                    result=result+r[start]*pow(2,start);
+                }
+
+                dst.put(i-1, j-1, result);
+            }
+        }
+        return dst;
+    }
+
     public void pca(int pcaN){
         //总的数据矩阵
         Mat allDataMat=new Mat(peopleCount*5+1,100*100, CvType.CV_32FC1);
@@ -135,7 +184,8 @@ public class CalculateActivity extends Toolbar2Activity {
             String no=userNoList.get(i);
             for(int j=1;j<=5;j++){
                 Mat m=Imgcodecs.imread(faceDir.getAbsolutePath()+"/"+no+"_"+j+".jpg", Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-                Imgproc.resize(m,m,new Size(100,100));//20*20的人脸图像,尺寸标准化
+                Imgproc.resize(m,m,new Size(102,102));//20*20的人脸图像,尺寸标准化
+                m=lbp(m);
                 Mat temp=m.reshape(1, 100*100);//change image's col & row，92*112行1列
                 for(int k=0;k<100*100;k++){
                     double[] data=new double[1];
@@ -147,7 +197,8 @@ public class CalculateActivity extends Toolbar2Activity {
         }
         //塞入测试的人脸
         Mat m=Imgcodecs.imread(testfaceDir.getAbsolutePath()+"/"+testFaceName+".jpg", Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
-        Imgproc.resize(m,m,new Size(100,100));//20*20的人脸图像,尺寸标准化
+        Imgproc.resize(m,m,new Size(102,102));//20*20的人脸图像,尺寸标准化
+        m=lbp(m);
         Mat temp=m.reshape(1, 100*100);//change image's col & row，92*112行1列
         for(int k=0;k<100*100;k++){
             double[] data=new double[1];
